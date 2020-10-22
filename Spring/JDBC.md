@@ -14,15 +14,18 @@ java.sql외에 JAVA가 인터페이스만 대부분 제공하는 패키지는 �
 ## JDBC 클래스의 생성 단계
 *해야할 일* DataSource와 각 jdbc 클래스와 관계
 https://www.edwith.org/boostcourse-web-be/lecture/58939/#
+https://www.dazhuanlan.com/2020/05/21/5ec63f1479e8a/
 
 ## 커넥션풀과 DataSource
 *해야할 일* Hicari CP 목적, 동작과정, 이와 같은 기술들,
-
+https://linked2ev.github.io/spring/2019/08/14/Spring-3-%EC%BB%A4%EB%84%A5%EC%85%98-%ED%92%80%EC%9D%B4%EB%9E%80/
+https://medium.com/datadriveninvestor/why-to-use-hikari-connection-pool-ce1a482cb9ab
 
 ## MyBatis vs JPA
 *해야할 일* +JDBC와 차이, jdbc클래스와 연관시켜 설명하고 차이, 표형태로 요약
 
 
+추가 내용  https://marine.pe.kr/m/1550
 ### 참고자료
 - [[부스트코스] 웹 백엔드](https://www.edwith.org/boostcourse-web-be/lecture/58939/)
 - 서적 코드로 배우는 스프링 웹 프로젝트 개정판
