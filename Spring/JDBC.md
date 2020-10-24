@@ -12,7 +12,7 @@ Q) java.sql패키지를 보면 대부분이 interface로 되어 있는 것을 �
 java.sql외에 JAVA가 인터페이스만 대부분 제공하는 패키지는 또 어떤 것이 있을까요?
 
 #### JDBC클래스의 생성단계
-![JDBC Class](./img/JDBCClass.png)
+![JDBC Class](./img/JDBCClass.png)   
 *출처: https://www.edwith.org/boostcourse-web-be/lecture/58939/#*
 
 #### JDBC 코드
@@ -63,7 +63,7 @@ DriverManager.getConnection() 실제 자바 프로그램과 데이터베이스�
   Connection Pool을 너무 크게 하면 메모리 소모가 클것이고, 적으면 connection이 많이 발생할 경우 대기시간이 발생하기 때문에 동시 접속자 수 등 서버 부하에 따라 크기를 조정해야 한다.   
   DBCP에는 HikariCP와 Commons DBCP, Tomcat-JDBC, BoneCP 등이 있다. 
 
-![Hikari Benchmark source](./img/hikariCP.png)
+![Hikari Benchmark source](./img/hikariCP.png)   
 *출처: https://github.com/brettwooldridge/HikariCP*
 
 **추가할 내용 스프링에서 hikariCP 설정**      
