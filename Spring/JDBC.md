@@ -53,14 +53,14 @@ Class.forName()의 클래스로더를 통해 데이터베이스 드라이버를 
 DriverManager.getConnection() 실제 자바 프로그램과 데이터베이스를 연결해주는 메소드이다. 그 결과 Connection 객체를 반환한다. 보통 Connection하나당 트랜잭션 하나를 관리한다. 자바 프로그램과 DB 사이의 길로 볼 수 있다. 이 길을 통해 statement 객체에 SQL문을 담아 보내고 결과값을 받는다. 
 
 ## Connection Pool
-여러 사용자가 웹사이트에 접속해 게시판 확인, 수정을 한다고 가정합니다. 
+여러 사용자가 웹사이트에 접속해 게시판 확인, 수정을 한다고 가정해보자. 
 1. 데이터 검색 
 2. 데이터 취득
 3. 데이터 갱신
 
-  한명의 접속자로 인해 3번의 DB 연결이 일어납니다. 만약 접속자가 N명(1000 < N)이라면 어떻게 될까요?   
-  이러한 오버헤드를 방지하기 위해 Connection pool은 미리 일정 수의 Connection 객체를 생성하고 해당 Connection을 빌려주고 반납 받으며 관리하는 역할을 합니다. 이는 매번 Connection을 생성하고 닫는데 시간 소모하지 않으며 미리 만들어 놓은 Connection을 사용하며 속도를 높일 수 있습니다.   
-  Connection Pool을 너무 크게 하면 메모리 소모가 클것이고, 적으면 connection이 많이 발생할 경우 대기시간이 발생하기 때문에 동시 접속자 수 등 서버 부하에 따라 크기를 조정해야 합니다.   
+  한명의 접속자로 인해 3번의 DB 연결이 일어납니다. 만약 접속자가 N명(1000 < N)이라면 어떻게 될까?   
+  이러한 오버헤드를 방지하기 위해 Connection pool은 미리 일정 수의 Connection 객체를 생성하고 해당 Connection을 빌려주고 반납 받으며 관리하는 역할을 한다. 이는 매번 Connection을 생성하고 닫는데 시간 소모하지 않으며 미리 만들어 놓은 Connection을 사용하며 속도를 높일 수 있다.   
+  Connection Pool을 너무 크게 하면 메모리 소모가 클것이고, 적으면 connection이 많이 발생할 경우 대기시간이 발생하기 때문에 동시 접속자 수 등 서버 부하에 따라 크기를 조정해야 한다.   
   DBCP에는 HikariCP와 Commons DBCP, Tomcat-JDBC, BoneCP 등이 있다. 
 
 ![Hikari Benchmark source](./img/hikariCP.png)
