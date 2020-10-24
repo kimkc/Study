@@ -68,7 +68,7 @@ DriverManager.getConnection() 실제 자바 프로그램과 데이터베이스�
 
 **추가할 내용 스프링에서 hikariCP 설정**      
 필요시 추가 내용   
-[HikariCP 동작과정](https://brunch.co.kr/@jehovah/24) ps)해당 블로그 redis설명도 좋음.
+[HikariCP 동작과정](https://brunch.co.kr/@jehovah/24) ps)해당 블로그 redis설명도 좋음.   
 [HikariCP가 빠른 이유](https://medium.com/datadriveninvestor/why-to-use-hikari-connection-pool-ce1a482cb9ab)
 
 
