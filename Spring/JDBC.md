@@ -58,24 +58,42 @@ DriverManager.getConnection() 실제 자바 프로그램과 데이터베이스�
 2. 데이터 취득
 3. 데이터 갱신
 
-한명의 접속자로 인해 3번의 DB 연결이 일어납니다. 만약 접속자가 N명(1000 < N)이라면 어떻게 될까요?   
-이러한 오버헤드를 방지하기 위해 Connection pool은 미리 일정 수의 Connection 객체를 생성하고 해당 Connection을 빌려주고 반납 받으며 관리하는 역할을 합니다. 이는 매번 Connection을 생성하고 닫는데 시간 소모하지 않으며 미리 만들어 놓은 Connection을 사용하며 속도를 높일 수 있습니다.   
-Connection Pool을 너무 크게 하면 메모리 소모가 클것이고, 적으면 connection이 많이 발생할 경우 대기시간이 발생하기 때문에 동시 접속자 수 등 서버 부하에 따라 크기를 조정해야 합니다.   
-*Mybatis의 SqlSession, Hibernate에 TransactionManager등의 Close가 이루어지면 Connection을 ConnectionPool에 반납하게 된다. <-- 해당 내용 수정 및 자세히 밑에 작성하기*
+  한명의 접속자로 인해 3번의 DB 연결이 일어납니다. 만약 접속자가 N명(1000 < N)이라면 어떻게 될까요?   
+  이러한 오버헤드를 방지하기 위해 Connection pool은 미리 일정 수의 Connection 객체를 생성하고 해당 Connection을 빌려주고 반납 받으며 관리하는 역할을 합니다. 이는 매번 Connection을 생성하고 닫는데 시간 소모하지 않으며 미리 만들어 놓은 Connection을 사용하며 속도를 높일 수 있습니다.   
+  Connection Pool을 너무 크게 하면 메모리 소모가 클것이고, 적으면 connection이 많이 발생할 경우 대기시간이 발생하기 때문에 동시 접속자 수 등 서버 부하에 따라 크기를 조정해야 합니다.   
+  DBCP에는 HikariCP와 Commons DBCP, Tomcat-JDBC, BoneCP 등이 있다. 
 
+![Hikari Benchmark source](./img/hikariCP.png)
+*출처: https://github.com/brettwooldridge/HikariCP*
 
-*해야할 일* Hicari CP 목적, 동작과정, 이와 같은 기술들,
-https://linked2ev.github.io/spring/2019/08/14/Spring-3-%EC%BB%A4%EB%84%A5%EC%85%98-%ED%92%80%EC%9D%B4%EB%9E%80/
-https://medium.com/datadriveninvestor/why-to-use-hikari-connection-pool-ce1a482cb9ab
+**추가할 내용 스프링에서 hikariCP 설정**      
+필요시 추가 내용   
+[HikariCP 동작과정](https://brunch.co.kr/@jehovah/24) ps)해당 블로그 redis설명도 좋음.
+[HikariCP가 빠른 이유](https://medium.com/datadriveninvestor/why-to-use-hikari-connection-pool-ce1a482cb9ab)
+
 
 #### Datasource
-javax.sql.DataSource 인터페이스는 ConnectionPool을 관리하는 목적으로 사용되는 객체다. Connection을 얻고 반납하는 등의 작업을 구현해야하는 인터페이스이다. Connection pool을 어플리케이션 단에서 어떻게 관리할지를 구현해야하는 인터페이스이다.
+javax.sql.DataSource 인터페이스는 ConnectionPool을 관리하는 목적으로 사용되는 객체다. Connection을 얻고 반납하는 등의 작업을 구현해야하는 인터페이스이다. Connection pool을 어플리케이션 단에서 어떻게 관리할지를 구현해야하는 인터페이스이다.   
+Mybatis의 SqlSession, Hibernate에 TransactionManager등의 Close가 이루어지면 Connection을 ConnectionPool에 반납하게 된다.    
+**추가하기**
+
+#### SqlSession
+**추가하기**   
+SqlSession은 "DB와 데이터를 교환할 때 열리는 터널"이라고 볼 수 있다.   
+서버와 DB 사이에서 Connection을 얻은 뒤 쿼리를 날려서 작업을 수행한다.
+
+#### TransactionManager
+**추가하기**
 
 ## MyBatis vs JPA
-*해야할 일* +JDBC와 차이, datasource와 어떻게 연결되고 connection이 이루어지고, sql이 일어나고 close되는지, jdbc클래스와 연관시켜 설명하고 차이, 표형태로 요약
+**해야할 일** +JDBC와 차이, datasource와 어떻게 연결되고 connection이 이루어지고, sql이 일어나고 close되는지, jdbc클래스와 연관시켜 설명하고 차이, 표형태로 요약   
+[hikariCP와 mybatis 동작과정](https://m.blog.naver.com/PostView.nhn?blogId=duco777&logNo=221118828039&proxyReferer=https:%2F%2Fwww.google.com%2F)
 
 
-추가 내용  https://marine.pe.kr/m/1550
+### 추가 공부 내용  
+- [JDBC SocketTimeOut](https://marine.pe.kr/m/1550)
+- [Commons DBCP 이해하기](https://d2.naver.com/helloworld/5102792)
+
 ### 참고자료
 - [[부스트코스] 웹 백엔드](https://www.edwith.org/boostcourse-web-be/lecture/58939/)
 - 서적 코드로 배우는 스프링 웹 프로젝트 개정판
