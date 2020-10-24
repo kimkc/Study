@@ -85,6 +85,8 @@ SqlSession은 "DB와 데이터를 교환할 때 열리는 터널"이라고 볼 �
 #### TransactionManager
 **추가하기**
 
+위 내용 덕분에 드라이버 로드, DB 연결, SQL문 작성 코드 등의 중복 코드가 제거되고, 성능도 높일 수 있다.
+
 ## MyBatis vs JPA
 **해야할 일** +JDBC와 차이, datasource와 어떻게 연결되고 connection이 이루어지고, sql이 일어나고 close되는지, jdbc클래스와 연관시켜 설명하고 차이, 표형태로 요약   
 [hikariCP와 mybatis 동작과정](https://m.blog.naver.com/PostView.nhn?blogId=duco777&logNo=221118828039&proxyReferer=https:%2F%2Fwww.google.com%2F)
