@@ -54,7 +54,7 @@ DriverManager.getConnection() 실제 자바 프로그램과 데이터베이스�
 
 **드라이버 로드, DB 연결, SQL문 작성 코드 등의 중복 코드, 연결 비효율 문제 발생**
 
-## Connection Pool
+#### Connection Pool
 여러 사용자가 웹사이트에 접속해 게시판 확인, 수정을 한다고 가정해보자. 
 1. 데이터 검색 
 2. 데이터 취득
