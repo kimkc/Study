@@ -52,6 +52,8 @@ Class.forName()의 클래스로더를 통해 데이터베이스 드라이버를 
 #### Connection
 DriverManager.getConnection() 실제 자바 프로그램과 데이터베이스를 연결해주는 메소드이다. 그 결과 Connection 객체를 반환한다. 보통 Connection하나당 트랜잭션 하나를 관리한다. 자바 프로그램과 DB 사이의 길로 볼 수 있다. 이 길을 통해 statement 객체에 SQL문을 담아 보내고 결과값을 받는다. 
 
+**드라이버 로드, DB 연결, SQL문 작성 코드 등의 중복 코드, 연결 비효율 문제 발생**
+
 ## Connection Pool
 여러 사용자가 웹사이트에 접속해 게시판 확인, 수정을 한다고 가정해보자. 
 1. 데이터 검색 
@@ -75,32 +77,56 @@ DriverManager.getConnection() 실제 자바 프로그램과 데이터베이스�
 #### Datasource
 javax.sql.DataSource 인터페이스는 ConnectionPool을 관리하는 목적으로 사용되는 객체다. Connection을 얻고 반납하는 등의 작업을 구현해야하는 인터페이스이다. Connection pool을 어플리케이션 단에서 어떻게 관리할지를 구현해야하는 인터페이스이다.   
 Mybatis의 SqlSession, Hibernate에 TransactionManager등의 Close가 이루어지면 Connection을 ConnectionPool에 반납하게 된다.    
-**추가하기**
 
 #### SqlSession
-**추가하기**   
 SqlSession은 "DB와 데이터를 교환할 때 열리는 터널"이라고 볼 수 있다.   
 서버와 DB 사이에서 Connection을 얻은 뒤 쿼리를 날려서 작업을 수행한다.   
 
-
-MyBatis는 SqlSessionFactory를 통해 SqlSession을 생성한다. SqlSession을 이용하여 매핑된 문장을 commit, rollback 연결을 수행한다. 만약 필요가 없다면 세션을 닫을 수 있다. MyBatis-Spring에서 Spring's transaction 설정을 기반해 Thread safe SqlSession을 자동으로 commits, rollbacks and closes the session을 해주기 때문에 SqlSessionFactory를 직접 사용할 필요없다.
-
-
 #### TransactionManager
-**추가하기**
+> 커넥션 객체를 열어 각종 sql쿼리를 수행하고 만들어진 Resultset, PreparedStatement 등의 DB관련 객체를 close했다.   
+**이 일련의 *과정=후에 찾아서 살펴보기*을 try,catch 문으로 둘려있고 만약 이 try 블록에서 예외가 발생한다면 catch문에서 rollback하는 과정을 거친다.**    
+이러한 과정이 계속 반복되기 때문에 **스프링에서 이를 생략할 수 있는 트랜잭션 템플릿 클래스 등을 제공**한다.   
+출처: https://kouzie.github.io/spring/Spring-스프링-트랜잭션/
 
-위 내용 덕분에 드라이버 로드, DB 연결, SQL문 작성 코드 등의 중복 코드가 제거되고, 성능도 높일 수 있다.
+Transaction을 처리하는 객체   
+Transaction의 경계(트랜잭션 시작, commit(정상종료), rollback(비정상종료))를 관리   
+Spring 제공 주요 Transaction Manager   
+DataSourceTransactionManager
+- Connection의 Transaction API 이용해 관리
+- JDBC API, MyBatis 이용 시 사용
+- Property로 DAO가 사용하는 DataSource를 제공 받아야한다.   
+
+이 외에 JpaTransactionManager, HibernateTransactionManager가 있다.
+
+
+## JDBC vs MyBatis vs JPA
+**해야할 일**
+|JDBC|MyBatis|JPA|
+|---|---|---|
+|""|""|""|
+
++JDBC와 차이, 표형태로 요약,
 
 ## MyBatis
-mybatis-spring과 연동하여 쉽게 사용 가능   
 
+dependency
+- mybatis, mybatis-spring: mybatis와 스프링 연동용 라이브러리   
+- **spring-jdbc(how??)**, spring-tx: 스프링 데이터베이스 처리와 트랜잭션 처리에 필요   
+
+**mybatis-spring** 라이브러리를 통해 SPRING에서 MyBatis를 쉽게 이용 가능하다.   
+핵심 객체는 SQLSession, SQLSessionFactory이다.   
+**SQLSessionFactory**는 내부적으로 SQLSession을 만들어 낸다. spring database connection 설정을 위해 datasource 속성을 가지고 있다.   
+**SQLSession**을 통해서 Connection을 생성하거나 원하는 SQL을 전달하고, 결과를 리턴 받는 구조로 작성된다. 
+[자세한 내용(mybatis-spring 공식문서)](https://mybatis.org/spring/index.html)   
+
+
+SqlSessionFactory를 이용해서 코드를 작성해도 직접 connection을 얻어서 jdbc 코딩 가능하지만 SQL을 어떻게 처리할 것인지 별도로 설정을 분리해주고, 자동으로 처리되는 방식을 위해 MyBatis의 Mapper라는 존재를 작성해줘야한다.   
+이는 **jdbc의 중복된 코드를 줄여주고 가독성을 높여주고 편하게 작업**하게 해준다.   
+mybatis-spring을 이용하여 Mapper를 **XML**과 **인터페이스+어노테이션** 형태로 작성할 수 있다. 후자가 편리하지만 sql이 복잡하거나 길어지는 경우 xml을 사용하는 것이 좋다. 동시에 사용도 가능하다. p93   
+[hikariCP와 mybatis 동작과정](https://m.blog.naver.com/PostView.nhn?blogId=duco777&logNo=221118828039&proxyReferer=https:%2F%2Fwww.google.com%2F)
 
 ## JPA
-
-## MyBatis vs JPA
-**해야할 일** +JDBC와 차이, datasource와 어떻게 연결되고 connection이 이루어지고, sql이 일어나고 close되는지, jdbc클래스와 연관시켜 설명하고 차이, 표형태로 요약,
-
-[hikariCP와 mybatis 동작과정](https://m.blog.naver.com/PostView.nhn?blogId=duco777&logNo=221118828039&proxyReferer=https:%2F%2Fwww.google.com%2F)
+**추가필요 datasource와 어떻게 연결되고 connection이 이루어지고, sql이 일어나고 close되는지, jdbc클래스와 연관시켜 설명하고 차이**
 
 
 ### 추가 공부 내용  
