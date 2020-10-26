@@ -105,10 +105,10 @@ DataSourceTransactionManager
 |---|---|---|
 |""|""|""|
 
+**중복코드 제거 외 jpa 사용 후 정리하기**
 +JDBC와 차이, 표형태로 요약,
 
 ## MyBatis
-
 dependency
 - mybatis, mybatis-spring: mybatis와 스프링 연동용 라이브러리   
 - **spring-jdbc(how??)**, spring-tx: 스프링 데이터베이스 처리와 트랜잭션 처리에 필요   
@@ -125,8 +125,9 @@ SqlSessionFactory를 이용해서 코드를 작성해도 직접 connection을 �
 mybatis-spring을 이용하여 Mapper를 **XML**과 **인터페이스+어노테이션** 형태로 작성할 수 있다. 후자가 편리하지만 sql이 복잡하거나 길어지는 경우 xml을 사용하는 것이 좋다. 동시에 사용도 가능하다. p93   
 [hikariCP와 mybatis 동작과정](https://m.blog.naver.com/PostView.nhn?blogId=duco777&logNo=221118828039&proxyReferer=https:%2F%2Fwww.google.com%2F)
 
-## JPA
-**추가필요 datasource와 어떻게 연결되고 connection이 이루어지고, sql이 일어나고 close되는지, jdbc클래스와 연관시켜 설명하고 차이**
+## JPA 
+**사용 후 정리**
+**추가필요** datasource와 어떻게 연결되고 connection이 이루어지고, sql이 일어나고 close되는지, jdbc클래스와 연관시켜 설명하고 차이
 
 
 ### 추가 공부 내용  
