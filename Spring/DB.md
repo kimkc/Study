@@ -84,8 +84,8 @@ SqlSession은 "DB와 데이터를 교환할 때 열리는 터널"이라고 볼 �
 
 #### TransactionManager
 > 커넥션 객체를 열어 각종 sql쿼리를 수행하고 만들어진 Resultset, PreparedStatement 등의 DB관련 객체를 close했다.   
-**이 일련의 *과정=후에 찾아서 살펴보기*을 try,catch 문으로 둘려있고 만약 이 try 블록에서 예외가 발생한다면 catch문에서 rollback하는 과정을 거친다.**    
-이러한 과정이 계속 반복되기 때문에 **스프링에서 이를 생략할 수 있는 트랜잭션 템플릿 클래스 등을 제공**한다.   
+이 <u>일련의 *과정=후에 찾아서 살펴보기*을 try,catch 문으로 둘려있고 만약 이 try 블록에서 예외가 발생한다면 catch문에서 rollback하는 과정</u>을 거친다.    
+이러한 과정이 계속 반복되기 때문에 <u>스프링에서 이를 생략</u>할 수 있는 트랜잭션 템플릿 클래스 등을 제공한다.   
 출처: https://kouzie.github.io/spring/Spring-스프링-트랜잭션/
 
 Transaction을 처리하는 객체   
