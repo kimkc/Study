@@ -80,15 +80,26 @@ Mybatis의 SqlSession, Hibernate에 TransactionManager등의 Close가 이루어�
 #### SqlSession
 **추가하기**   
 SqlSession은 "DB와 데이터를 교환할 때 열리는 터널"이라고 볼 수 있다.   
-서버와 DB 사이에서 Connection을 얻은 뒤 쿼리를 날려서 작업을 수행한다.
+서버와 DB 사이에서 Connection을 얻은 뒤 쿼리를 날려서 작업을 수행한다.   
+
+
+MyBatis는 SqlSessionFactory를 통해 SqlSession을 생성한다. SqlSession을 이용하여 매핑된 문장을 commit, rollback 연결을 수행한다. 만약 필요가 없다면 세션을 닫을 수 있다. MyBatis-Spring에서 Spring's transaction 설정을 기반해 Thread safe SqlSession을 자동으로 commits, rollbacks and closes the session을 해주기 때문에 SqlSessionFactory를 직접 사용할 필요없다.
+
 
 #### TransactionManager
 **추가하기**
 
 위 내용 덕분에 드라이버 로드, DB 연결, SQL문 작성 코드 등의 중복 코드가 제거되고, 성능도 높일 수 있다.
 
+## MyBatis
+mybatis-spring과 연동하여 쉽게 사용 가능   
+
+
+## JPA
+
 ## MyBatis vs JPA
-**해야할 일** +JDBC와 차이, datasource와 어떻게 연결되고 connection이 이루어지고, sql이 일어나고 close되는지, jdbc클래스와 연관시켜 설명하고 차이, 표형태로 요약   
+**해야할 일** +JDBC와 차이, datasource와 어떻게 연결되고 connection이 이루어지고, sql이 일어나고 close되는지, jdbc클래스와 연관시켜 설명하고 차이, 표형태로 요약,
+
 [hikariCP와 mybatis 동작과정](https://m.blog.naver.com/PostView.nhn?blogId=duco777&logNo=221118828039&proxyReferer=https:%2F%2Fwww.google.com%2F)
 
 
