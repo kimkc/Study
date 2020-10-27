@@ -3,13 +3,18 @@
 
 ## 인증
 #### Stateful Server
-- Session을 사용한 Server
-- 확장성 좋지 않다.
+- 쿠키(cookie)를 이용한 세션기반의 인증 = 세션상태유지(stateful)
+- Scale-out에 좋지 않다.
+- 도메인이 다른 서버에서 요청시 세션 쿠키가 공유되지 않음
+
+**구성도 그리기**
 
 #### Stateless Server
-- 확장성이 좋다.
-- 토큰 인증 방식
+- Scale-Out 가능(Stateless)
+- http header에 인증 토큰을 같이 보낸다.
 - JWT
+
+**구성도 그리기**
 
 #### JWT
 
