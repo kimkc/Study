@@ -6,6 +6,9 @@
 #### Stateless Server
 - 확장성이 좋다.
 - 토큰 인증 방식
+- JWT
+
+#### JWT
 
 [인증](https://www.youtube.com/watch?v=y0xMXlOAfss)
 
