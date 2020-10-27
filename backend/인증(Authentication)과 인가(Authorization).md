@@ -1,3 +1,6 @@
+인증(Authentication):
+인가(Authorization):
+
 ## 인증
 #### Stateful Server
 - Session을 사용한 Server
