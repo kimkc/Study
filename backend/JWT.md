@@ -20,10 +20,11 @@ JWT는 비밀 ( HMAC 알고리즘 사용) 또는 RSA 또는 ECDSA를 사용하�
 **정보 교환**: JWT는 두 당사자간 안전하게 정보를 교환하는데 좋은 방법이다. JWT에 담겨있는 헤더(header), 정보(payload)을 통해(키와 같이) 서명(signature)되어 토큰이 유효한지를 검사하고 정보도 교환할 수 있다. 
 
 ### JWT 구조
-- Header : 알고리즘, 타입 정보를 담는다.
-- Payload : 사용자가 사용할 정보를 마음대로 담을 수 있다.
-- Signature: header + payload + key를 통해 서명된다. 이는 유효성 검증 때, 같은 키(싱글 키, 공개/비공개 키)를 가지고 인코딩된 서명을 디코딩하여 유효성을 체크한다.   
+- **Header** : 알고리즘, 타입 정보를 담는다.
+- **Payload** : 사용자가 사용할 정보를 마음대로 담을 수 있다.
+- **Signature**: header + payload + key를 통해 서명된다. 이는 유효성 검증 때, 같은 키(싱글 키, 공개/비공개 키)를 가지고 인코딩된 서명을 디코딩하여 유효성을 체크한다.   
 xxxxx.yyyyy.zzzzz 최종 형태이다. 
+
 
 출처: https://jwt.io/introduction/
 
