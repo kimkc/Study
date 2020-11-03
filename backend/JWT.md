@@ -7,6 +7,8 @@ JSON 웹 토큰은 두 당사자간에 JSON object로 안전하게 정보를 제
 이때, HMAC알고리즘을 사용하는 단일 키와 공개/ 개인 키 쌍을 사용하는 RSA, ECDSA 알고리즘이 있다.
 
 
+
+
 ### JWT 사용 
 > Authorization: This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.
 
@@ -15,6 +17,10 @@ JSON 웹 토큰은 두 당사자간에 JSON object로 안전하게 정보를 제
 > Information Exchange: JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
 
 **정보 교환**: JWT는 두 당사자간 안전하게 정보를 교환하는데 좋은 방법이다. JWT에 담겨있는 **헤더(header)**, **정보(payload)**을 통해(키와 같이) **서명(signature)**되어 **콘텐츠가 변조되지 않았는지 확인**할 수도 있다.   
+
+
+
+
 
 ### JWT 구조
 - **Header** : 알고리즘, 토큰 유형 정보를 담는다.   
@@ -35,10 +41,15 @@ header와 payload는 디코딩하면 누구나 읽을 수 있다. header, payloa
 출처: https://jwt.io/introduction/   
 해당 사이트에서 디버거를 통해 인코딩된 값을 디코딩하여 디버깅을 할 수 있다.
 
+
+
+
+
 ### GO(gin)에서 만든 JWT를 JAVA(SPRING BOOT)에서 유효성 검사하기
 
 클라이언트에서 로그인 시 gin서버에서 계정 확인 후 JWT 보내준다.
 또한 여러 요청시 JWT 검증이 필요한 요청은 유효성 검증 후 응답을 해준다.
+
 
 #### 이슈
 원인
@@ -46,9 +57,9 @@ header와 payload는 디코딩하면 누구나 읽을 수 있다. header, payloa
 - 예외 확인(디버깅) 미흡
 - encode(byte, string)   
    
-JWT에 대한 구조, 동작 과정에 대한 이해 없이 GIN에 있는 코드(JWT-GO)를 SPRING BOOT(JJWT)에서 구현하였다. **코드 작성 전에 해당 라이브러리에 대해 공식문서, 구조, 동작 과정(코드), 사용 이유 등 기초적이고 구조적**으로 이해 하지 못해 방향을 잃고 더 많은 시간을 보냈다. JWT에 대해 알아가며 미리 분석했다면 일어나지 않을 시도(키의 위치, 키 타입, 인코딩, 암호화)를 하고 있음을 느꼈다.   
+- JWT에 대한 구조, 동작 과정에 대한 이해 없이 GIN에 있는 코드(JWT-GO)를 SPRING BOOT(JJWT)에서 구현하였다. **코드 작성 전에 해당 라이브러리에 대해 공식문서, 구조, 동작 과정(코드), 사용 이유 등 기초적이고 구조적**으로 이해 하지 못해 방향을 잃고 더 많은 시간을 보냈다. JWT에 대해 알아가며 미리 분석했다면 일어나지 않을 시도(키의 위치, 키 타입, 인코딩, 암호화)를 하고 있음을 느꼈다.   
    
-**예외를 통해 어떠한 문제가 있는지 확인**할 수 있다. 하지만 예외 사항에 대한 이해가 부족하여 문제 파악을 제대로 하지 못했다. SignatureException 시 "jwt tempered"라는 출력을, ExpiredJwtException 시 "jwt expired" 출력을 하였다. 하지만 예외 종류에 대한 이해가 부족하여 jwt 뒤 출력문의 차이를 이해하려기 보다 "jwt" 만보고 추상적으로 문제가 있다는 생각만하여 해결을 위해 다른 시도를 하였다.
+- **예외를 통해 어떠한 문제가 있는지 확인**할 수 있다. 하지만 예외 사항에 대한 이해가 부족하여 문제 파악을 제대로 하지 못했다. SignatureException 시 "jwt tempered"라는 출력을, ExpiredJwtException 시 "jwt expired" 출력을 하였다. 하지만 예외 종류에 대한 이해가 부족하여 jwt 뒤 출력문의 차이를 이해하려기 보다 "jwt" 만보고 추상적으로 문제가 있다는 생각만하여 해결을 위해 다른 시도를 하였다.
 - ClaimJwtException: JWT 권한claim 검사가 실패했을 때
 - ExpiredJwtException: 유효 기간이 지난 JWT를 수신한 경우
 - MalformedJwtException: 구조적인 문제가 있는 JWT인 경우
@@ -57,7 +68,8 @@ JWT에 대한 구조, 동작 과정에 대한 이해 없이 GIN에 있는 코드
 - UnsupportedJwtException: 수신한 JWT의 형식이 애플리케이션에서 원하는 형식과 맞지 않는 경우
    
    
-expired 예외를 던져도 signature예외라 생각하였다. 키를 사용하는데 생성할 때와 검증 할 때, GIN에서는 BYTE[] 형태를 사용하였지만, String으로 해보고, java의 secretkey 객체, 여러 인코딩 방법으로 key값 인코딩 등 키 관련 시도만 하였다. 유효성 검사 후 토큰 만료 에러를 던져도 키 관련 시도만 하였다.
+- expired 예외를 던져도 signature예외라 생각하였다. 키를 사용하는데 생성할 때와 검증 할 때, GIN에서는 BYTE[] 형태를 사용하였지만, String으로 해보고, java의 secretkey 객체, 여러 인코딩 방법으로 key값 인코딩 등 키 관련 시도만 하였다. 유효성 검사 후 토큰 만료 에러를 던져도 키 관련 시도만 하였다.
+   
    
    
 ###### 결론   
