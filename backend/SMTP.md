@@ -58,7 +58,7 @@ https://unabated.tistory.com/m/entry/mail-%EC%A0%84%EC%86%A1%EC%9D%98-%EC%9B%90%
 - smtp 중점의 메일 전송 과정   
 https://programming119.tistory.com/152
    
-- 구체적인 smtp 설명   
+- **구체적인 smtp 설명** 통신 예제 포함   
 https://www.joinc.co.kr/w/Site/Network_Programing/Documents/SMTP   
    
 - 텔넷을 통한 smtp 연결테스트   
