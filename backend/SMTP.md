@@ -74,7 +74,7 @@ InternetAddress\[\] 배열을 message.addRecipients(메시지, 수신자)를 통
 <br/><br/>
 
 **2. JavaMailSender**   
-MailSender 인터페이스 상속 받은 JavaMailSender   
+**MailSender(찾아보기)** 인터페이스 상속 받은 JavaMailSender   
 1. spring-boot-starter-mail 의존성을 추가   
 2. SMTP를 통해 메일을 보내기 위해 사용하는 SMTP Sever(GOOGLE, NAVER 등)의 요구사항에 맞는 설정
 3. application.property에서 사용자 내용 설정함(우리는 DB에서 불러와 설정)
@@ -119,9 +119,6 @@ https://ktko.tistory.com/m/entry/JAVA-SMTP%EC%99%80-Mail-%EB%B0%9C%EC%86%A1%ED%9
    
 - 스프링부트메일전송 sendermail   
 https://victorydntmd.tistory.com/m/342   
-mailSender / JavaMailSender로 갈립니다.   
-이미지붙이는 방법도 여러가지   
-html코드 허용시킬지도 설정가능   
    
 - Java transport를  통한  연결확인   
 https://stackoverflow.com/questions/3060837/validate-smtp-server-credentials-using-java-without-actually-sending-mail   
