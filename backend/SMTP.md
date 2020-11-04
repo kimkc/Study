@@ -50,7 +50,8 @@ SMTP는  메일 서버 보관함까지만 작용하고, 수신자는 위 3가지
 
 #### 예제
 
-
+---
+<br/><br/>
 # 자바(spring boot) smtp 설정
 후에 실제 코드와 합쳐진다면 spring 폴더로 옮기기
 
@@ -96,8 +97,10 @@ Message클래스의 MimeMessage를 통해 첨부파일이나
 MailTemplateService를 통해 HTML   
 메세지 설정 후 전송   
 => front 코드 확인 후 수정
+<br/><br/>
 
-
+---
+<br/><br/>
 ### 참고 자료
 - 메일 전송의 원리(POP3, IMAP 설명 포함)   
 https://unabated.tistory.com/m/entry/mail-%EC%A0%84%EC%86%A1%EC%9D%98-%EC%9B%90%EB%A6%AC
