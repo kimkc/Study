@@ -41,7 +41,7 @@ header와 payload는 디코딩하면 누구나 읽을 수 있다. header, payloa
 ---
 
 ### GO(gin)에서 만든 JWT를 JAVA(SPRING BOOT)에서 유효성 검사하기
-
+![JWT 흐름](./img/JWT흐름도.png)
 클라이언트에서 로그인 시 gin서버에서 계정 확인 후 JWT 보내준다.
 또한 여러 요청시 JWT 검증이 필요한 요청은 유효성 검증 후 응답을 해준다.
 
