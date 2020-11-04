@@ -12,7 +12,7 @@ SMTP는 Simple mail Transfer protocol의 약자이다.
 <br/><br/>
 
 #### 동작 과정
-<img src="./img/mailProcess.png" height="400px" width="300px" />
+<p align="center"><img src="./img/mailProcess.png" height="400px" width="500px" /></p>
 
 > 내 메일 : abc@naver.com   
 상대방 메일 : def@daum.net<br/><br/>
