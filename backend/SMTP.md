@@ -70,13 +70,14 @@ https://ktko.tistory.com/m/entry/JAVA-SMTP%EC%99%80-Mail-%EB%B0%9C%EC%86%A1%ED%9
 InternetAddress\[\] 배열을 message.addRecipients(메시지, 수신자)를 통해 **다중 메일 전송 가능**
 
 **사용하는 메일의 환경설정에서 smtp허용하거나 smtp 관련 결정이 정해진 경우는 어떻게?**   
+<br/><br/>
 
-**2. JavaMailSender**
-MailSender 인터페이스 상속 받은 JavaMailSender
-    1. spring-boot-starter-mail 의존성을 추가   
-    2. SMTP를 통해 메일을 보내기 위해 사용하는 SMTP Sever(GOOGLE, NAVER 등)의 요구사항에 맞는 설정
-    3. application.property에서 사용자 내용 설정함(우리는 DB에서 불러와 설정)
-    4. Message 객체를 통해 수신자, 제목, 메세지 설정 후 전송
+**2. JavaMailSender**   
+MailSender 인터페이스 상속 받은 JavaMailSender   
+1. spring-boot-starter-mail 의존성을 추가   
+2. SMTP를 통해 메일을 보내기 위해 사용하는 SMTP Sever(GOOGLE, NAVER 등)의 요구사항에 맞는 설정
+3. application.property에서 사용자 내용 설정함(우리는 DB에서 불러와 설정)
+4. Message 객체를 통해 수신자, 제목, 메세지 설정 후 전송
 
 MimeMessageHelper를 통해 이미지, 첨부파일 등을 포함한 메일 발송 가능   
 HTML element가 많다면 MailTemplateServiec 사용하면 편리하다.
@@ -93,7 +94,8 @@ HTML element가 많다면 MailTemplateServiec 사용하면 편리하다.
 DB의 Template Table의 내용을 가져와   
 Message클래스의 MimeMessage를 통해 첨부파일이나   
 MailTemplateService를 통해 HTML   
-메세지 설정 후 전송
+메세지 설정 후 전송   
+=> front 코드 확인 후 수정
 
 
 ### 참고 자료
