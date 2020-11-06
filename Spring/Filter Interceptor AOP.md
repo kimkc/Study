@@ -46,7 +46,8 @@
 - init(): 필터 인스턴스 초기화
 - doFilter(): 전/후 처리
 - destroy(): 필터 인스턴스 종료
-   
+<br/>
+<br/>
    
 ## Interceptor
 interceptor는 **스프링 DispatcherServlet**이 **Controller를 호출하기 전, 후**에 실행된다.   
@@ -59,7 +60,8 @@ interceptor는 **스프링 DispatcherServlet**이 **Controller를 호출하기 �
 - preHandler(): 컨트롤러 메서드가 실행되기 전
 - postHanler():컨트롤러 메서드 실행직 후 view페이지 렌더링 되기 전
 - afterCompletion(): view페이지가 렌더링 되고 난 후
-   
+<br/>
+<br/>
    
 ## AOP(따로 정리하기)
 OOP 개념을 보완하기 위해 나온 개념    
