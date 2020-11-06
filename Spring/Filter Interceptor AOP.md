@@ -72,8 +72,9 @@ AOP의 Advice와 HandlerInterceptor의 가장 큰 차이는 **파라미터**의 
 Advice의 경우 JoinPoint나 ProceedingJoinPoint 등을 활용해서 호출한다.   
 반면 HandlerInterceptor는 Filter와 유사하게 HttpServletRequest, HttpServletResponse를 파라미터로 사용한다.
 
-> Q. 왜 AOP가 주소에 대상 지정이 가능한데 Interceptor를 사용할까? 
+> Q. 왜 AOP가 주소에 대상 지정이 가능한데 Interceptor를 사용할까?    
 A.
+
 
 **후에 코드로 차이 느끼기**
 
