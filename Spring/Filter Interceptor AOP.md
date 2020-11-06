@@ -7,11 +7,13 @@
 그 결과, 위 3가지 방법이 나왔다.   
 <br/>
 스프링에서 Filter, Interceptor, AOP 는 모두 **무슨 행동을 하기전에 먼저 실행**하거나, **실행한 후에 추가적인 행동**을 할 때 사용되는 기능들이다.   
-
-#### Filter, Interceptor, AOP 흐름
+<br/>
+<br/>
+### Filter, Interceptor, AOP 흐름
 ![Filter,Interceptor, AOP flow](./img/filterNinterceptorNaop.png)
 
 *출처: https://goddaehee.tistory.com/154 [갓대희의 작은공간]*
+<br/>
 
 - 요청이 들어오면 **Filter → Interceptor → AOP → Interceptor → Filter**(그림 화살표 방향 유의)
    1. 서버를 실행시켜 서블릿이 올라오는 동안에 init이 실행되고, 그 후 doFilter가 실행된다. 
@@ -21,16 +23,19 @@
    
 - **Interceptor**와 **Filter**는 **Servlet 단위**에서 실행된다.   
 반면 **AOP**는 메소드 앞에 **Proxy패턴**의 형태로 실행된다.
-
+<br/>
+<br/>
 
 |항목|Filter|Interceptor|AOP|
-|---|---|---|---|
+|------|------|---|---|
 |실행 위치|서블릿(Dispatcher Servlet 바깥)|서블릿(Dispatcher Servlet 안쪽)|메소드|
 |설정 파일 위치|web.xml|xml or java|xml or java|
 |스프링 자원 사용|X|O|O|
 |적용 예|인코딩, XSS|로그인, 권한|트랜잭션, 로깅, 에러처리|
+<br/>
+<br/>
 
-### Filter
+## Filter
 서블릿 필터는 **DispatcherServlet 이전**에 실행이 되는데 필터가 동작하도록 지정된 자원의 앞단에서 요청내용을 변경하거나,  여러가지 체크를 수행할 수 있다.(spring 동작 순서 살펴보기)   
 자원의 처리가 끝난 후 응답내용에 대해서도 변경하는 처리를 할 수가 있다.   
 **스프링 context 외부에 존재**하여 스프링과 무관한 자원에 대해 동작   
@@ -43,7 +48,7 @@
 - destroy(): 필터 인스턴스 종료
    
    
-### Interceptor
+## Interceptor
 interceptor는 **스프링 DispatcherServlet**이 **Controller를 호출하기 전, 후**에 실행된다.   
 **스프링 context 내부**에서 Controller에 관한 요청과 응답에 대해 처리한다.   
 스프링의 **모든 빈 객체에 접근가능**하다.   
@@ -56,7 +61,7 @@ interceptor는 **스프링 DispatcherServlet**이 **Controller를 호출하기 �
 - afterCompletion(): view페이지가 렌더링 되고 난 후
    
    
-### AOP(따로 정리하기)
+## AOP(따로 정리하기)
 OOP 개념을 보완하기 위해 나온 개념    
 종단면에서 바라보고 처리   
 주로 '로깅', '트랜잭션', '에러 처리' 등 비즈니스단의 메서드에서 조금 더 세밀하게 조정하고 싶을 때 사용   
