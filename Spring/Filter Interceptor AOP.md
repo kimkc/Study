@@ -10,7 +10,7 @@
 <br/>
 <br/>
 ### Filter, Interceptor, AOP 흐름
-![Filter,Interceptor, AOP flow](./img/filterNinterceptorNaop.png)
+![Filter,Interceptor, AOP flow](./img/filterNinterceptorNAOP.png)
 
 *출처: https://goddaehee.tistory.com/154 [갓대희의 작은공간]*
 <br/>
