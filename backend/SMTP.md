@@ -42,6 +42,7 @@ SMTP는  메일 서버 보관함까지만 작용하고, 수신자는 위 3가지
 => 바이너리 데이터를 텍스트로 변환할 필요가 생길 때, Base64( = 알파벳 대소문자 52 + 숫자10 + "+"기호 + "/"기호) encoding 기법을 사용한다. 데이터를 받으면 Base64 decode 과정을 통해 원래 데이터로 복원한다.   
     
 <br/>
+
 #### 위와 같은 문제 해결을 통한 구조( 헤더 1개 + 각 헤더, 바디 같이 3개)
 <p align="center"> <img src="./img/SMTPFormatExample.png" height="400px" width="300px" /></p>
 
