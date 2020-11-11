@@ -64,4 +64,7 @@ Allow 헤더를 이용해 허용하는 메서드를 알려줍니다.
 **100,300은 필요시 참고하고 추가**
 
 참고자료
-- https://developer.mozilla.org/ko/docs/Web/HTTP/Status#:~:text=HTTP%20%EC%9D%91%EB%8B%B5%20%EC%83%81%ED%83%9C%20%EC%BD%94%EB%93%9C%EB%8A%94,2616%EC%97%90%20%EC%A0%95%EC%9D%98%EB%90%98%EC%96%B4%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.
+- HTTP STATUS 문서   
+https://developer.mozilla.org/ko/docs/Web/HTTP/Status#:~:text=HTTP%20%EC%9D%91%EB%8B%B5%20%EC%83%81%ED%83%9C%20%EC%BD%94%EB%93%9C%EB%8A%94,2616%EC%97%90%20%EC%A0%95%EC%9D%98%EB%90%98%EC%96%B4%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.
+- 상태코드, 뭘줘야할까?
+https://woowacourse.github.io/javable/2020-08-31/http-status-code
