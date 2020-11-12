@@ -6,7 +6,7 @@ JSON 웹 토큰은 두 당사자간에 JSON object로 안전하게 정보를 제
 정보는 **디지털 서명**이 되어 있으므로 **유효성을 검증**하고 신뢰할 수 있다.   
 이때, HMAC알고리즘을 사용하는 단일 키와 공개/ 개인 키 쌍을 사용하는 RSA, ECDSA 알고리즘이 있다.
 
-
+---
 
 ## JWT 사용 
 > Authorization: This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.
@@ -15,9 +15,10 @@ JSON 웹 토큰은 두 당사자간에 JSON object로 안전하게 정보를 제
 
 > Information Exchange: JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
 
-**정보 교환**: JWT는 두 당사자간 안전하게 정보를 교환하는데 좋은 방법이다. JWT에 담겨있는 **헤더(header)**, **정보(payload)**을 통해(키와 같이) **서명(signature)**되어 **콘텐츠가 변조되지 않았는지 확인**할 수도 있다.   
+**정보 교환**: JWT는 두 당사자간 안전하게 정보를 교환하는데 좋은 방법이다.    
+JWT에 담겨있는 **헤더(header)**, **정보(payload)** 을 통해(키와 같이) **서명(signature)** 되어 **콘텐츠가 변조되지 않았는지 확인**할 수도 있다.   
 
-
+---
 
 ## JWT 구조
 - **Header** : 알고리즘, 토큰 유형 정보를 담는다.   
@@ -38,7 +39,7 @@ header와 payload는 디코딩하면 누구나 읽을 수 있다. header, payloa
 출처: https://jwt.io/introduction/   
 해당 사이트에서 디버거를 통해 인코딩된 값을 디코딩하여 디버깅을 할 수 있다.
 
-
+---
 
 ## GO(gin)에서 만든 JWT를 JAVA(SPRING BOOT)에서 유효성 검사하기
 <p align="center"><img src="./img/JWT흐름도.png" alt="JWT 흐름" width="600px" height="400px" /></p>
