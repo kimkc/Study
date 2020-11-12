@@ -1,4 +1,4 @@
-### JWT란
+## JWT란
 > JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.  
 >> RFC(Request for comments): 인터넷(Internet)과 TCP/IP에 대한 제안, 접수된 일련의 조사결과, 측정, 아이디어, 기술, 관찰 뉴스, 표준 등의 종합체를 말한다. 인터넷국제표준화기구(IETF)는 일부 RFC를 인터넷 표준으로 받아들이기도 한다.
 
@@ -6,9 +6,9 @@ JSON 웹 토큰은 두 당사자간에 JSON object로 안전하게 정보를 제
 정보는 **디지털 서명**이 되어 있으므로 **유효성을 검증**하고 신뢰할 수 있다.   
 이때, HMAC알고리즘을 사용하는 단일 키와 공개/ 개인 키 쌍을 사용하는 RSA, ECDSA 알고리즘이 있다.
 
----
 
-### JWT 사용 
+
+## JWT 사용 
 > Authorization: This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.
 
 **권한**: JWT를 사용하여 유저가 로그인 후, JWT를 가지고 있다면 허용된 토큰과 함께 서비스, 경로, 자원에 접근할 수 있다. 싱글 사인온은 작은 오버헤드와 여러 도메인에서 쉽게 사용될 수 있기 때문에 오늘날 널리 사용되는 기능이다.
@@ -17,9 +17,9 @@ JSON 웹 토큰은 두 당사자간에 JSON object로 안전하게 정보를 제
 
 **정보 교환**: JWT는 두 당사자간 안전하게 정보를 교환하는데 좋은 방법이다. JWT에 담겨있는 **헤더(header)**, **정보(payload)**을 통해(키와 같이) **서명(signature)**되어 **콘텐츠가 변조되지 않았는지 확인**할 수도 있다.   
 
----
 
-### JWT 구조
+
+## JWT 구조
 - **Header** : 알고리즘, 토큰 유형 정보를 담는다.   
 
 - **Payload** : 클레임을 포함하는 페이로드이다. 클레임은 엔터티 및 추가 데이터에 대한 설명이다. 클레임에는 registered, public, private **3가지 종류의 클레임**이 있다. 자세한 설명은 참고문헌을 참고하길 바란다.
@@ -38,9 +38,9 @@ header와 payload는 디코딩하면 누구나 읽을 수 있다. header, payloa
 출처: https://jwt.io/introduction/   
 해당 사이트에서 디버거를 통해 인코딩된 값을 디코딩하여 디버깅을 할 수 있다.
 
----
 
-### GO(gin)에서 만든 JWT를 JAVA(SPRING BOOT)에서 유효성 검사하기
+
+## GO(gin)에서 만든 JWT를 JAVA(SPRING BOOT)에서 유효성 검사하기
 <p align="center"><img src="./img/JWT흐름도.png" alt="JWT 흐름" width="600px" height="400px" /></p>
 
 
@@ -48,7 +48,7 @@ header와 payload는 디코딩하면 누구나 읽을 수 있다. header, payloa
 또한 여러 요청시 JWT 검증이 필요한 요청은 유효성 검증 후 응답을 해준다.
 
 
-#### 이슈
+### 이슈
 원인
 - JWT에 대한 낮은 이해도
 - 예외 확인(디버깅) 미흡
@@ -69,6 +69,6 @@ header와 payload는 디코딩하면 누구나 읽을 수 있다. header, payloa
    
    
    
-###### 결론   
+##### 결론   
 위와 같은 과정들을 통해 JWT 공식 문서를 보고, JJWT, JWT-GO, JWT 디버깅 통해 토큰 생성, 유효성 검증 동작을 확인하며 JWT가 던지는 예외를 통해 문제 파악을 제대로 할 수 있었다. 이해를 바탕으로 SPRING BOOT에서 JWT 생성해보고 GIN과 같은 JWT 값을 가지도록 만들고, 이때, 사용된 키(타입)를 사용하니 제대로 유효성 검증이 되었다. 그 후 GIN에서 만든 만료되기 전 토큰 값을 가지고 한 번 더 SPRING BOOT에서 확인한 결과 문제가 해결되었다.   
 결국, 키의 STRING -> BYTE 문제였는데, 초반에 제대로 검증 후 EXPIRED 예외를 보지 못하고 키에 대한 시도들만 하며 SIGNATURE 예외를 보며 방향 잃은게 제일 큰 문제였다.
