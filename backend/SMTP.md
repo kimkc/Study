@@ -101,6 +101,14 @@ MailTemplateService를 통해 HTML
 => front 코드 확인 후 수정
 <br/><br/>
 
+### 이슈
+javaMailSender를 생성 안하고, property 설정 후 session 생성 후 transport객체를 이용하여 연결   
+**이슈**: 연결이 어떨 땐 되고, 연결 후 아이디, 비밀번호를 바꾸고, host를 변경해도 연결이 됨.
+   연결이 안되면 연결 될 때와 같은 설정을 해도 연결이 되지 않음.
+   
+javaMailSender를 사용하여 해당 객체에 property를 설정하니 호스트, 아이디, 비밀번호 등을 제대로 하지 않으면 정확히 연결이 되고 안되고가 예외와 같이 던져짐   
+**가정**: javaMailSender와 관련된 javaMailSenderImpl, MessageType?, Service, Session, Transport 등 javaMailSender가 다른 **객체, 인터페이스들과 안에서 어떻게 동작하는지 살펴보기**
+
 ---
 <br/><br/>
 ### 참고 자료
