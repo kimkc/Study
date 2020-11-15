@@ -113,6 +113,12 @@ https://programming119.tistory.com/152
 - **구체적인 smtp 설명(통신 예제 포함)**
 https://www.joinc.co.kr/w/Site/Network_Programing/Documents/SMTP   
    
+- java smtp properties   
+https://javaee.github.io/javamail/docs/api/com/sun/mail/smtp/package-summary.html   
+   
+- java, spring boot javaMailSender   
+https://www.baeldung.com/spring-email   
+   
 - 텔넷을 통한 smtp 연결테스트   
 https://hope.pe.kr/50   
    
