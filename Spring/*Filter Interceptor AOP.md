@@ -145,7 +145,7 @@ public class HttpHeaderNJWTInterceptor implements HandlerInterceptor {
     }
 }
 
-//Intercepter 설정 
+//Intercepter 설정 클래스 위와 분리
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
