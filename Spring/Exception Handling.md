@@ -8,9 +8,9 @@
 
 ## @ControllerAdvice
 전역 예외 처리  
-어플리케이션의 예외처리를 맡음
-@@ExceptionHandler와 같이 사용된다.
-@ResponseStatus: http status를 리턴, ResponseEntity를 사용하지 않는 경우 상태코드를 보내기 위해서 사용?
+어플리케이션의 예외처리를 맡음   
+@@ExceptionHandler와 같이 사용된다.   
+@ResponseStatus: http status를 리턴, ResponseEntity를 사용하지 않는 경우 상태코드를 보내기 위해서 사용?   
 
 ``` java
 @ControllerAdvice  
@@ -42,13 +42,13 @@ Controller(해당 컨트롤러 클래스에서만) 예외 처리
 ## try-catch
 메서드 단위: 지양(코드 길이 증가, 가독성 감소)   
 직접 try-catch로 처리시 우선순위가 더 높다.   
-**예외 처리에 대한 좋은 예 추가하기**
+
 
 ## redteam 예제(Spring boot)
 공부 이유: Restful API의 smtp 인증 실패, 토큰 만료 등에 대해 예외가 발생하면 팀과 정해 놓은 http status를 응답해야함.
 행동: 이에 Service, DAO 등에서 발생하는 예외를 Controller로 throws   
 Controller에서 try,catch로 특정 예외를 catch하여 ResponseEntity<Object>(내용, HttpStatus.상태코드)를 응답해주었다.   
-**try, catch로 가독성이 떨어지는 코드 @ExceptionHander나 @ControllerAdvice로 리팩터링해보기**
+### try, catch로 가독성이 떨어지는 코드 @ExceptionHander나 @ControllerAdvice로 리팩터링해보기
 <br />
 
 ### 참고자료
@@ -58,5 +58,5 @@ https://springboot.tistory.com/33
 - 다른 @ControllerAdvice, @ExceptionHandler, ResponseEntity 예   
 https://velog.io/@aidenshin/Spring-Boot-Exception-Controller
 
-- try-catch 지양, Exception전략   
+- **try-catch 지양, Exception전략**   
 https://cheese10yun.github.io/spring-guide-exception/#error-response-json-1
