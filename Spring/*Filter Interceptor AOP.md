@@ -84,8 +84,11 @@ A.
 <br/>
 
 ## redteam Intercepter
-Cors 관련 http 헤더와 jwt 유효성 검사를 intercepter를 통하여 구현
-이슈: /** 대신 /* 을 사용하여 intercepter 적용안되는 바보같은..
+Cors 관련 http 헤더와 jwt 유효성 검사를 intercepter를 통하여 구현   
+**확인필요** 인터셉터에서 token유효성 검사를 하기에 인터셉터로 예외를 던지고 처리한다.      
+이슈: /** 대신 /* 을 사용하여 intercepter 적용안되는 바보같은..   
+배운 것: 
+
 
 ### WebMvcConfigurer란 무엇인가?, 스프링에서는 무엇으로 구현되는가?
 
@@ -173,3 +176,7 @@ https://velog.io/@sa833591/Spring-Filter-Interceptor-AOP-%EC%B0%A8%EC%9D%B4-yvmv
    
 - Filter, Interceptor, AOP 코드와 설명   
 https://offbyone.tistory.com/32   
+
+- intercepter 클래스 생성, configure에서 인터셉터 url패턴 등 지정   
+https://www.leafcats.com/40   
+https://elfinlas.github.io/2017/12/28/SpringBootInterceptor/   
