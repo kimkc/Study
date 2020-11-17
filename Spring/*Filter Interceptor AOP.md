@@ -145,7 +145,7 @@ public class HttpHeaderNJWTInterceptor implements HandlerInterceptor {
     }
 }
 
-//Intercepter 및 CORS 관련 
+//Intercepter 설정 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
