@@ -48,6 +48,11 @@ Controller(해당 컨트롤러 클래스에서만) 예외 처리
 공부 이유: Restful API의 smtp 인증 실패, 토큰 만료 등에 대해 예외가 발생하면 팀과 정해 놓은 http status를 응답해야함.
 행동: 이에 Service, DAO 등에서 발생하는 예외를 Controller로 throws   
 Controller에서 try,catch로 특정 예외를 catch하여 ResponseEntity<Object>(내용, HttpStatus.상태코드)를 응답해주었다.   
+
+배운것: 
+- http status 및 오류 코드 문서화
+- 예외, 에러시 응답 형식 고민(error message-json, text),
+
 ### try, catch로 가독성이 떨어지는 코드 @ExceptionHander나 @ControllerAdvice로 리팩터링해보기
 <br />
 
