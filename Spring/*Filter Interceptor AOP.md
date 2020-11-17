@@ -74,16 +74,96 @@ AOP의 Advice와 HandlerInterceptor의 가장 큰 차이는 **파라미터**의 
 Advice의 경우 JoinPoint나 ProceedingJoinPoint 등을 활용해서 호출한다.   
 반면 HandlerInterceptor는 Filter와 유사하게 HttpServletRequest, HttpServletResponse를 파라미터로 사용한다.
 
+**후에 코드로 차이 느끼기**
+
+### 추가할 것
 > Q. 왜 AOP가 주소에 대상 지정이 가능한데 Interceptor를 사용할까?    
 A.
 
 
-**후에 코드로 차이 느끼기**
+## redteam Intercepter
+Cors 관련 http 헤더와 jwt 유효성 검사를 intercepter를 통하여 구현
+이슈: /** 대신 /* 을 사용하여 intercepter 적용안되는 바보같은..
+
+### WebMvcConfigurer란 무엇인가?, 스프링에서는 무엇으로 구현되는가?
+
+``` java
+//Intercepter 클래스
+@Component
+public class HttpHeaderNJWTInterceptor implements HandlerInterceptor {
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+    {
+         //CORS 관련 Header
+        response = setHeader(response);
+
+        Cookie[] cookies = request.getCookies();
+        Cookie cookie = null;
+        
+        if (cookies != null) {
+            for (Cookie c : cookies) {
+
+                try{
+                    if (c.getName().equals("access-token")) {
+                        TokenUtils.isValidToken(c.getValue());
+                        return true;
+                    }
+                } catch (ExpiredJwtException e) {
+
+                    try {
+                        response.sendError(403, "token expired");
+                        return false;
+                    }catch(IOException ex){
+                        ex.printStackTrace();
+                        return false;
+                    }
+                } catch (JwtException e) {
+                
+         ...
+                
+        }catch(IOException ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public HttpServletResponse setHeader(HttpServletResponse response){
+        SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0");
+        response.setHeader("Last-Modified", format.format(new Date()));
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Expires", "-1");
+
+        return response;
+    }
+}
+
+//Intercepter 및 CORS 관련 
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Autowired
+    HttpHeaderNJWTInterceptor httpHeaderNJWTInterceptor;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(httpHeaderNJWTInterceptor)
+                .addPathPatterns("/**");
+    }
+
+}
+```
+
 <br/>
 <br/>
 
-#### 참고자료
-- Filter, Interceptor, AOP 차이 및 개념
+### 참고자료
+- Filter, Interceptor, AOP 차이 및 개념   
 https://goddaehee.tistory.com/154   
    
 - Filter, Interceptor, AOP 차이   
