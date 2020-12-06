@@ -68,7 +68,8 @@ SMTP를 사용하여 대용량 메일을 보낼 시 많은 리소스를 사용
 # 해야할 일
 
 - RabbitMQ와의 차이 좀 더 살펴보기
-- 메시지 큐말고 다른 대안은?
+- 위 카프카 용어 정리 및 아래 블로그에서 아키텍처 불러오기
+- 스프링부터 적용, 아키텍처 구성(producer, broker, consumer)과 kafka retention 정리
    
 ### 참고자료
 - 메시지 큐 개념과 설명, RabbitMQ vs Kafka   
