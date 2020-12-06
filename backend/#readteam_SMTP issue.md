@@ -55,12 +55,31 @@ SMTP를 사용하여 대용량 메일을 보낼 시 많은 리소스를 사용
  위 4가지가 아닌 큐의 다양한 기능 RabbitMQ   
  카프카는 오버스펙일 수 도 있다.
  
-   
+### Kafka
+- Pub-Sub 모델
+
+- 카프카의 구성요소 및 특징
+   - topic, partiton :
+   - Producer, Consumer :
+   - broker, zookeepr : 
+   - consumer group : 
+   - replication :
+
 # 해야할 일
-- 카프카 사용법
+
 - RabbitMQ와의 차이 좀 더 살펴보기
 - 메시지 큐말고 다른 대안은?
    
 ### 참고자료
 - 메시지 큐 개념과 설명, RabbitMQ vs Kafka   
 https://ellune.tistory.com/29
+
+- 카프카 구성요소, 동작원리   
+https://medium.com/@umanking/%EC%B9%B4%ED%94%84%EC%B9%B4%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0-%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90-%EB%A8%BC%EC%A0%80-data%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0%ED%95%B4%EB%B3%B4%EC%9E%90-d2e3ca2f3c2   
+https://engkimbs.tistory.com/691   
+
+- kafka Producer 생성과 설명   
+https://leeyh0216.github.io/2020-05-03/kafka_producer
+
+- kafka가 데이터를 저장하는 방식retention      
+https://gunju-ko.github.io/kafka/2019/03/16/%EC%B9%B4%ED%94%84%EC%B9%B4%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC%EC%A0%80%EC%9E%A5%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95.html
