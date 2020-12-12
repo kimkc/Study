@@ -1,4 +1,4 @@
-### 이슈
+## 이슈
 SMTP를 사용하여 대용량 메일을 보낼 시 많은 리소스를 사용   
 
 10000명의 대상에게 메일을 보낼 경우, 각 대상마다 커스터마이징 된 템플릿과 함께 대상 수 만큼 SMTP를 통해 메일을 보냄   
@@ -51,17 +51,19 @@ SMTP를 사용하여 대용량 메일을 보낼 시 많은 리소스를 사용
 
  - 100k/sec 처리를 보장
  
+ 사용 사례: 메시징, 웹 사이트 활동추적, 지표, 로그 집계, 스트림처리
+ 
  고성능, 분산, 대용량, 노드장애대응 = 카프카   
  위 4가지가 아닌 큐의 다양한 기능 RabbitMQ   
  카프카는 오버스펙일 수 도 있다.
  
-### Kafka
-- Pub-Sub 모델
+## Kafka
+- Pub-Sub(Producer,Consumer) 모델
 
 - 카프카의 구성요소 및 특징
-   - topic, partiton :
-   - Producer, Consumer :
+   - Producer(publisher), Consumer(subscriber) :
    - broker, zookeepr : 
+   - topic, partiton :
    - consumer group : 
    - replication :
 
@@ -70,6 +72,7 @@ SMTP를 사용하여 대용량 메일을 보낼 시 많은 리소스를 사용
 - RabbitMQ와의 차이 좀 더 살펴보기
 - 위 카프카 용어 정리 및 아래 블로그에서 아키텍처 불러오기
 - 스프링부터 적용, 아키텍처 구성(producer, broker, consumer)과 kafka retention 정리
+- zookeeper에 대해 알아보기
    
 ### 참고자료
 - 메시지 큐 개념과 설명, RabbitMQ vs Kafka   
@@ -84,3 +87,6 @@ https://leeyh0216.github.io/2020-05-03/kafka_producer
 
 - kafka가 데이터를 저장하는 방식retention      
 https://gunju-ko.github.io/kafka/2019/03/16/%EC%B9%B4%ED%94%84%EC%B9%B4%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC%EC%A0%80%EC%9E%A5%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95.html
+
+- Kafka 공식사이트   
+https://kafka.apache.org/intro
