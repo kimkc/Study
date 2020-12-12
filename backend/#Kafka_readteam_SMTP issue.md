@@ -59,20 +59,28 @@ SMTP를 사용하여 대용량 메일을 보낼 시 많은 리소스를 사용
  
 ## Kafka
 - Pub-Sub(Producer,Consumer) 모델
-<p align="center"><img src="./img/kafka_design.png" alt="kafka_design" width="600px" height="400px" /></p>
+<p align="center"><img src="./img/kafka_design.jpg" alt="kafka_design" width="600px" height="400px" /></p>
 
 - 카프카의 구성요소 및 특징
-   - Producer(publisher), Consumer(subscriber) :
-   - broker, zookeepr : 
-   - topic, partiton :
-   - consumer group : 
-   - replication :
+   - Producer(publisher): Kafka Topic에 데이터를 쓰는 측 (consumer와 사호 존재 여부를 모른다.)
+   - Consumer(subscriber) : Kafka Topic에서 데이터를 읽고 처리하는 측
+   - broker, zookeepr : Topic을 관리하는 카프카 서버. 동일한 노드내에서 여러개의 brkoker 서버를 띄울 수 있고, Zookeeper는 이러한 분산 메시지 큐의 정보를 관리하는 역할
+   - topic, partiton :   
+   Kafka에 저장되는 메시지는 topic으로 분류되고, topic은 여러 개의 partition으로 나뉠 수 있다.   
+   partition안에는 메시지의 상대적 위치를 나타내는 offset이 있다.   
+   이 offset정보를 이용해 이전에 가져간 메시지의 위치정보를 알 수 있고, 동시에 들어오는 많은 데이터를 여러 개의 파티션에 나누어 저장하기 때문에 병렬로 빠르게 처리할 수 있다.
+   - consumer group : 하나의 topic을 읽어가기 위한 consumer들의 그룹. partition:Consumer Group = 1 : n 룰을 지켜주는 것이 병렬처리와 특정 컨슈머에게 문제가 생겼을 때, 다른 커슈머가 대신 읽을 수 있게 리밸런싱 가능
+   - replication : replication 수를 임의로 지정하여 복제된 topic을 만들 수 있다. 특정 broker에 문제가 생겼을 경우 해당 broker의 역할을 다른 broker에서 즉각적으로 대신 수행할 수 있게 하기 위한 용도, leader&follower
+   - retention :    
+   Kafka의 데이터 보관 주기 설정.   
+   기본적으로 7일 설정.   
+   카프카의 특징으로 메모리가 아닌 디스크에 메시지를 저장하고 유지. consumer가 메시지를 읽어가면 바로 삭제하지 않고 일정기간 데이터를 유지한다. 이 설정을 할 수 있다.   
+   cf) 디스크에 데이터를 쓰기 때문에 느리다 => 기존의 디스크 사용법과 달리 특정 영역의 디스크에 순차적으로 쓰기 때문에 읽어가는 영역의 범위가 확 줄어 속도 조금 빨라짐   
+   또한 무조건 데이터를 디시크에 쓴다기 보다는 vm메모리의 일부를 페이지 캐싱으로 사용하기 때문에 속도가 빠르다.
+
 
 # 해야할 일
-
-- RabbitMQ와의 차이 좀 더 살펴보기
-- 위 카프카 용어 정리 및 아래 블로그에서 아키텍처 불러오기
-- 스프링부터 적용, 아키텍처 구성(producer, broker, consumer)과 kafka retention 정리
+- 데이터를 디스크에 저장하는데도 빠른 이유와 이에 대한 이유 중 vm메모리의 일부를 페이지 캐싱으로 사용하기에 속도가 빠르다는 게 어떤 의미인지 명확히 찾아보기
 - zookeeper에 대해 알아보기
    
 ### 참고자료
@@ -80,10 +88,11 @@ SMTP를 사용하여 대용량 메일을 보낼 시 많은 리소스를 사용
 https://ellune.tistory.com/29
 
 - 카프카 구성요소, 동작원리   
-https://medium.com/@umanking/%EC%B9%B4%ED%94%84%EC%B9%B4%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0-%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90-%EB%A8%BC%EC%A0%80-data%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0%ED%95%B4%EB%B3%B4%EC%9E%90-d2e3ca2f3c2   
+https://medium.com/@umanking/%EC%B9%B4%ED%94%84%EC%B9%B4%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0-%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90-%EB%A8%BC%EC%A0%80-data%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0%ED%95%B4%EB%B3%B4%EC%9E%90-d2e3ca2f3c2    
 https://engkimbs.tistory.com/691   
+https://epicdevs.com/17   
 
-- kafka Producer 생성과 설명   
+- kafka Producer 생성과 설명(코드)   
 https://leeyh0216.github.io/2020-05-03/kafka_producer
 
 - kafka가 데이터를 저장하는 방식retention      
