@@ -59,6 +59,7 @@ SMTP를 사용하여 대용량 메일을 보낼 시 많은 리소스를 사용
  
 ## Kafka
 - Pub-Sub(Producer,Consumer) 모델
+<p align="center"><img src="./img/kafka_design.png" alt="kafka_design" width="600px" height="400px" /></p>
 
 - 카프카의 구성요소 및 특징
    - Producer(publisher), Consumer(subscriber) :
