@@ -108,6 +108,7 @@ Producer 객체가 많을수록 Kafka Broker Server와의 Connection만 많이 �
 - 데이터를 디스크에 저장하는데도 빠른 이유와 이에 대한 이유 중 vm메모리의 일부를 페이지 캐싱으로 사용하기에 속도가 빠르다는 게 어떤 의미인지 명확히 찾아보기
 - zookeeper에 대해 알아보기
 - **싱글톤, thread-safe 따로 정리하기**
+- spring boot-kafka: offset, group_id 설정에 대한 공부
    
 ### 참고자료
 - 메시지 큐 개념과 설명, RabbitMQ vs Kafka   
