@@ -132,3 +132,15 @@ https://jeong-pro.tistory.com/86
 
 - thread safe   
 https://gompangs.tistory.com/entry/OS-Thread-Safe%EB%9E%80
+
+
+--- 
+
+- 스프링 공식문서: 실제 적용 코드(여러 참고 자료)      
+https://docs.spring.io/spring-kafka/docs/2.3.13.RELEASE/reference/html/#even-quicker-with-spring-boot
+
+- 카프카, 스프링부트 연동: config, produecerConfig, producer(비동기로 메시지 consume시 코드), consumerConfig, consumer 직접 구현   
+https://seungwoo0429.tistory.com/m/29
+
+- 카프카, 스프링부트 연동: config = application.properties로 구현, proudcer, conusmer 구현 (간단, 간단한 프로세스인 프로젝트에 적합)   
+https://victorydntmd.tistory.com/348
