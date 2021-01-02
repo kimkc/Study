@@ -124,6 +124,9 @@ https://leeyh0216.github.io/2020-05-03/kafka_producer
 - kafka가 데이터를 저장하는 방식retention      
 https://gunju-ko.github.io/kafka/2019/03/16/%EC%B9%B4%ED%94%84%EC%B9%B4%EA%B0%80%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC%EC%A0%80%EC%9E%A5%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95.html
 
+- 윈도우 콘솔 카프카 실행   
+https://cookiethecat2020.blogspot.com/2020/03/blog-post.html
+
 - Kafka 공식사이트   
 https://kafka.apache.org/intro
 
