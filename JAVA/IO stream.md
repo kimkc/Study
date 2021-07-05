@@ -59,6 +59,10 @@ Reader나 Writer 객체는 한 문자 단위로 입출력 => 10개의 문자로 
 정규식 처리가 필요한게 아닌 경우 StringTokenizer가 효율적
 
 
+## 결론
+- 코딩테스트나 프로그래밍에서 많은 양의 문자를 다룰 때는 BufferedReader 사용, 적은 양과 타입이 여러개라면 Scanner를 사용(thread-safe X)
+- 따로 정규식을 사용하지 않고 문자열을 자르려면 split가 아닌, StringTokenizer 사용
+
 ## 참고자료
 - 티맥스 클라우드 네이티브 어플리케이션 개발자 양성과정 자바 교육
 - https://dodocap.tistory.com/entry/JAVA%EC%9D%98-%EC%9E%85%EC%B6%9C%EB%A0%A5-%EA%B8%B0%EB%B3%B8%EA%B0%9C%EB%85%90-Stream-ReaderWriter-Buffered
